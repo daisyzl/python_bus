@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1" charset="utf-8"/>
+    <title>公交线路查询</title>
+</head>
+<body>
+    <h2>公交站点查询</h2>
+    <form method="post">
+        <p><span>公交站点:</span><input type="text" id="stationname"/></p>
+        <p><span>符合要求的公交名称:</span>
+              <table class="table table-condensed table-striped">
+            <tbody>
+            {% if buslines %}
+            {% for bus_number in buslines %}
+                <td class="stake_number">{{ bus_number.name }}</td>
+            {% end %}
+            {% end %}
+            </table>
+
+        </p>
+
+        <button type="button" calss="btn btn-info" onclick="queren(true)">查询</button>
+    </form>
+
+
+
+
+    <h2>公交线路查询</h2>
+    <form method="post">
+        <p><span>公交线路:</span><input type="text" id="busname"></p>
+        <p><span>公交线路图:</span>
+            <table class="table table-condensed table-striped">
+            <tbody>
+            {% if busstations %}
+            {% for bus_station in busstations %}
+                <td class="stake_number">{{ bus_station. bus_station}}</td>
+            {% end %}
+            {% end %}
+            </table>
+
+        </p>
+        <button type="button" calss="btn btn-info" onclick="queren2(true)">查询</button>
+    </form>
+
+
+
+<script src="{{static_url('js/script.js')}}"></script>
+<script src="{{static_url('js/jquery.min.js')}}"></script>
+<script>
+$(document).ready(function() {
+});
+
+</script>
+
+
+</body>
+</html>
