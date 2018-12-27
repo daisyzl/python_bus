@@ -3,7 +3,7 @@
 #说明:
 #!/usr/bin/env python
 #-*-coding:utf-8-*-
-#说明:
+#说明:系统启动
 import tornado
 
 from app import create_app

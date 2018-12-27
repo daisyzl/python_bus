@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #-*-coding:utf-8-*-   
-#说明:
+#说明:主要是数据库链接信息
 
 # coding:utf-8
 import json
@@ -13,7 +13,7 @@ from sqlalchemy.ext.declarative import declarative_base
 
 from config import AppConfig
 
-engine = create_engine(AppConfig.SQLALCHEMY_DATABASE_URI, encoding="utf-8", echo=True, max_overflow=5)
+engine = create_engine(AppConfig.SQLALCHEMY_DATABASE_URI, encoding="utf-8", max_overflow=5)
 db_session = scoped_session(sessionmaker(autocommit=False, bind=engine))
 
 Base = declarative_base()
@@ -45,13 +45,24 @@ Base.to_json = to_json
 
 def init_db():
     import app.models
-    Base.metadata.create_all(engine)
-    app.models.BusNumber.insert_bus_number()
-    app.models.BusLine.insert_bus_station()
-    app.models.BusLine.query_bus_station()
+    Base.metadata.create_all(engine)#自动创建数据库
+    app.models.BusNumber.insert_bus_number()#自动插入数据
+    app.models.BusLine.insert_bus_station()#自动插入数据
+
 
 
 
 
 if __name__=='__main__':
     init_db()
+
+
+'''
+创建数据库表一定要用命令行
+from database import init_db
+init_db()
+
+
+创建表中的数据用dadabase.py中的main函数
+
+'''

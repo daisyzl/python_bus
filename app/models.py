@@ -1,9 +1,8 @@
 #!/usr/bin/env python
 #-*-coding:utf-8-*-   
-#说明:
+#说明:创建数据库结构
 
-from sqlalchemy import Column, Integer, String, text, ForeignKey, create_engine
-from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 
 from app.constants import BUS_NUMBER, BUS_STATION1, BUS_STATION2
@@ -62,13 +61,8 @@ class BusLine(Base):
                 db_session.add(bus_station)
             db_session.commit()
             db_session.remove()
-        # id自增无法输入
 
 
-    @staticmethod
-    def query_bus_station():
-        bus_line = BusLine.query.filter_by(id=1).first()
-        print(bus_line)
 
 
 

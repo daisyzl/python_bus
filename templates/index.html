@@ -9,14 +9,15 @@
     <form method="post">
         <p><span>公交站点:</span><input type="text" id="stationname"/></p>
         <p><span>符合要求的公交名称:</span>
-              <table class="table table-condensed table-striped">
+        <table class="table table-condensed table-striped" id="myBusLine">
             <tbody>
             {% if buslines %}
             {% for bus_number in buslines %}
-                <td class="stake_number">{{ bus_number.name }}</td>
+                <td class="stake_number" id="bus_number">{{ bus_number}}</td>
             {% end %}
             {% end %}
-            </table>
+            </tbody>
+        </table>
 
         </p>
 
@@ -34,9 +35,10 @@
             <tbody>
             {% if busstations %}
             {% for bus_station in busstations %}
-                <td class="stake_number">{{ bus_station. bus_station}}</td>
+                <td class="stake_number" id="bus_line">{{ bus_station}}</td>
             {% end %}
             {% end %}
+            </tbody>
             </table>
 
         </p>
